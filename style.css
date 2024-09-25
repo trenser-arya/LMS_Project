@@ -1,0 +1,73 @@
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Space Grotesk";
+}
+nav {
+  height: 5rem;
+  background-color: #0088ffe2;
+  width: inherit;
+}
+#nav-div {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+nav section {
+  margin-top: 2rem;
+}
+#book-icon {
+  font-size: 2rem;
+}
+#book-icon-head {
+  display: inline;
+  font-family: "Dancing Script";
+}
+.buttons, input {
+  background-color: #fff;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 1rem;
+  font-family: inherit;
+  border: none;
+}
+section input{
+  width: 15rem;
+  padding-left: 1rem;
+}
+.buttons:hover {
+  background-color: #0ff;
+}
+#home-main-content {
+  background: url(assests/background.jpg);
+  opacity: 0.85;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+blockquote {
+  display: flex;
+}
+#card-main{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+#card-main div img{
+  width: 100%;
+  border-radius: 1rem;
+}
+.card {
+  margin-top: 1rem;
+  box-shadow: 0 1rem 0.5rem 0 rgba(0,0,0,0.2);
+  width: 20rem;
+  border-radius: 1rem;
+}
+.container{
+  text-align: center;
+  padding-bottom: 1rem;
+}
