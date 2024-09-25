@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Library Management System</title>
+</head>
+<body>
+    <main id="add-book-page">
+      <form id="add-book-form" class="forms">
+        <header class="main-header">
+          <h4>Bookaholic</h4>
+          <h5>Add Book</h5>
+        </header>
+        <section class="input-section">
+          <label for="book-name">Book Name</label>
+          <input
+            type="text"
+            name="book-name"
+            placeholder="Book Name"
+            id="book-name"
+            aria-label="Enter Book Name Here"
+            required
+          />
+          <span id="book-name-validate" class="validator"></span>
+        </section>
+        <section class="input-section">
+          <label for="author-name">Author</label>
+          <input
+            type="text"
+            name="author-name"
+            placeholder="Author"
+            id="author"
+            aria-label="Enter Author Name Here"
+            required
+          />
+          <span id="author-name-validate" class="validator"></span>
+        </section>
+        <section class="input-section">
+          <label for="year">Year Of Publication</label>
+          <input
+            type="number"
+            min="1800"
+            name="year"
+            id="publication-year"
+            placeholder="YYYY"
+            aria-label="Enter Publication Year Here"
+            required
+          />
+          <span id="year-validate" class="validator"></span>
+        </section>
+        <section class="input-section">
+          <label for="isbn-number">ISBN</label>
+          <input
+            type="tel"
+            name="isbn-number"
+            id="isbn"
+            pattern="^(?:\d{9}X|\d{10}|\d{13})$"
+            placeholder="0-061-96436-0"
+            aria-label="Enter ISBN Number Here"
+            required
+          />
+          <span id="phone-validate" class="validator"></span>
+        </section>
+        <section class="input-section">
+          <label for="price">Price</label>
+          <input
+            type="price"
+            min="0"
+            name="price"
+            id="price"
+            placeholder="$xxx"
+            aria-label="Enter Price Here"
+            required
+          />
+          <span id="price-validate" class="validator"></span>
+        </section>
+        <section class="input-section">
+          <label for="description">Description</label>
+          <textarea
+            name="description"
+            placeholder="Add Description Here..."
+            id="discription"
+            aria-label="Enter Description Here"
+            required></textarea>
+          <span id="discription-validate"></span>
+        </section>
+        <button
+          id="add-button" class="buttons"
+          aria-label="Click The Button For Adding book to database"
+        >
+          Add
+        </button>
+      </form>
+    </main>
+</body>
+</html>

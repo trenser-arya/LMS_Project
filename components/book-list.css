@@ -1,0 +1,36 @@
+body{
+    background-image: url(../assests/background.jpg);
+    color: #fff;
+    font-family: "Space Grotesk";
+    overflow-x: hidden;
+}
+header{
+    text-align: center;
+}
+main{
+    color: #000;
+    display: flex;
+    justify-content: center;
+    background-color: #f1efefdb;
+    width: 100%;
+    padding: 2rem;
+}
+table{
+    padding: 1rem;
+    width: 100%;
+}
+table, th,td{
+    border: 0.1rem solid #000;
+    border-collapse: collapse;
+}
+th, td{
+    text-align: center;
+    height: 3.5rem;
+}
+.buttons{
+  background-color: #0088ffe2;
+  color: #fff;
+  border-radius: 0.5rem;
+  border: none;
+  height: 1.5rem;
+}

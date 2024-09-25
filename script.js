@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   loadPage();
 });
+
 function loadPage() {
   const signInButton = document.getElementById("sign-in-button");
   const signUpButton = document.getElementById("sign-up-button");
+
+  const welcomePage= document.getElementById("welcome-page");
   const userLoginPage = document.getElementById("user-signin-page");
   const adminLoginPage = document.getElementById("admin-signin-page");
   const userRegisterPage = document.getElementById("signup-page");
@@ -49,6 +52,8 @@ function loadPage() {
 
   if (signUpButton) {
     signUpButton.addEventListener("click", function (event) {
+      userLoginPage.style.display = "none";
+      userRegisterPage.style.display="block";
       location.href = "components/signup.html";
     });
   }
