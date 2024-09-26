@@ -49,13 +49,13 @@ section input{
   align-items: center;
   color: #fff;
 }
+#card-main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 blockquote {
   display: flex;
-}
-#card-main{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
 }
 #card-main div img{
   width: 100%;

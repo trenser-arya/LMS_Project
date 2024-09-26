@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Library Management System</title>
   </head>
   <body>
@@ -40,7 +41,7 @@
             aria-label="Enter Your Password Here"
             required
           />
-          <span id="password-validate-login" class="validator"></span>
+          <span id="password-validate-user" class="validator"></span>
         </section>
         <button id="login-button" class="buttons" aria-label="Click The Button For Login">
           Login
@@ -51,53 +52,6 @@
             href="#Register"
             aria-label="Click this link to go to registration page"
             >Register for free</a
-          >
-        </p>
-        <p class="paragraph">
-          Continue As Admin <br />
-          <a id="admin-login-link" href="#AdminLogin">Admin Login</a>
-        </p>
-      </form>
-    </main>
-    <main id="admin-signin-page">
-      <form id="admin-login-form-content" class="forms">
-        <header class="main-header">
-          <h4>Bookaholic</h4>
-          <h5>Admin Login</h5>
-        </header>
-        <section class="input-section">
-          <label for="username-admin">Username</label>
-          <input
-            type="text"
-            name="username-admin"
-            id="username-admin-login"
-            placeholder="Username"
-            aria-label="Enter Your Username Here"
-            required
-          />
-          <span id="username-validate-login" class="validator"></span>
-        </section>
-        <section class="input-section">
-          <label for="password-admin">Password</label>
-          <input
-            type="password"
-            name="password-admin"
-            id="password-admin-login"
-            placeholder="Password"
-            aria-label="Enter Your Password Here"
-            required
-          />
-          <span id="password-validate-login" class="validator"></span>
-        </section>
-        <button
-          id="admin-login-button" class="buttons"
-          aria-label="Click The Button For Login To Admin Pages"
-        >
-          Login
-        </button>
-        <p class="paragraph">
-          Continue As User <br /><a id="user-login-link" href="#UserLogin"
-            >User Login</a
           >
         </p>
       </form>

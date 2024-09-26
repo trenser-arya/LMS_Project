@@ -6,7 +6,6 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const userModel = require("./userModel");
 const bookModel = require("./bookModel");
-const adminModel = require("./adminModel");
 
 // App Initialization
 const JWT_SECRET = "AryaPradeep212";
@@ -33,13 +32,7 @@ mongoose
 
 // user registration
 app.post("/register", async (req, res) => {
-  const {
-    name,
-    username,
-    email,
-    phone,
-    password,
-  } = req.body;
+  const { name, username, email, phone, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
   try {
     const oldUser = await userModel.findOne({ username });
@@ -47,7 +40,6 @@ app.post("/register", async (req, res) => {
     if (oldUser) {
       return res.send({ error: "User Exists" });
     }
-
     await userModel.create({
       name,
       username,
@@ -55,7 +47,6 @@ app.post("/register", async (req, res) => {
       phone,
       password: hashedPassword,
     });
-
     return res.send({ status: "ok" });
   } catch (error) {
     console.log(error);
@@ -66,10 +57,6 @@ app.post("/register", async (req, res) => {
 //book view
 app.get("/viewbook", async (req, res) => {
   try {
-    //const user = await userModel.findById(req.body.id);
-    //if (!user.access) {
-    //  return res.status(403).send("Access Denied");
-    //}
     const data = await bookModel.find();
     res.json(data);
   } catch (error) {
@@ -119,35 +106,15 @@ app.post("/login", async (req, res) => {
       });
 
       if (res.status(201)) {
-        return res.json({ status: "ok", data: token });
+        console.log(res);
+        return res.json({ status: "ok", data: token, role: user.role });
       } else {
         return res.json({ error: "error" });
       }
     }
-
     res.json({ status: "error", error: "Invalid Password" });
   } catch (error) {
-    console.log(error);
     res.send({ status: "error" });
-  }
-});
-
-//admin login
-app.post("/adminlogin", async (req, res) => {
-  const { username, password } = req.body;
-  try {
-    const user = await adminModel.findOne({ username });
-    const isPasswordValid = await compare(password, user.password);
-    if (!isPasswordValid) {
-      return res.status(401).json({ error: "Invalid Password" });
-    }
-    const token = jwt.sign({ id: user._id }, JWT_SECRET, {
-      expiresIn: "1w",
-    });
-    res.status(200).json({ status: "ok", data: token });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -196,19 +163,6 @@ app.post("/createbook", async (req, res) => {
   }
 });
 
-//admin add
-app.post("/createadmin", async (req, res) => {
-  try {
-    console.log(req.body);
-    const result = new adminModel(req.body);
-    await result.save();
-    res.send("Data Added");
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("An error occurred while saving the data.");
-  }
-});
-
 //delete book
 app.delete("/deletebook/:id", async (req, res) => {
   var id = req.params.id;
@@ -244,17 +198,6 @@ app.delete("/deleteuser/:id", async (req, res) => {
   var id = req.params.id;
   await userModel.findByIdAndDelete(id);
   res.send("Deleted");
-});
-
-//user view
-app.get("/viewadmin", async (req, res) => {
-  try {
-    const data = await adminModel.find();
-    res.json(data);
-  } catch (error) {
-    console.log(error);
-    res.send({ status: "error" });
-  }
 });
 
 // Port Checking

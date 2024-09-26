@@ -12,7 +12,7 @@ main{
     display: flex;
     justify-content: center;
     background-color: #f1efefdb;
-    width: 100%;
+    width: 95%;
     padding: 2rem;
 }
 table{
@@ -33,4 +33,10 @@ th, td{
   border-radius: 0.5rem;
   border: none;
   height: 1.5rem;
+}
+#add-book,
+#user-list-button{
+    width: 20rem;
+    margin: 1rem;
+    height: 2rem;
 }

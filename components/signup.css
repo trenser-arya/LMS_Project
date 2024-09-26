@@ -8,20 +8,23 @@ body{
   background: url(../assests/background.jpg);
   overflow: hidden;
 }
-/* #user-signin-page{
-  display: none;
-} */
+
 #signup-page {
   display: none;
 }
-#admin-signin-page {
-  display: none;
-}
 .forms {
-  padding: 2.5rem 5rem;
+  padding: 1.5rem 5rem;
   background: #fefefe;
   border-radius: 1.75rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 10), 0 6px 20px 0 rgba(0, 0, 0, 10)
+}
+.forms .main-header{
+  text-align: center;
+}
+.forms .main-header p{
+  inline-size: 25rem;
+  font-size: 0.8rem;
+  overflow-wrap: break-word;
 }
 .main-header h4 {
   font-weight: 400;
