@@ -107,7 +107,7 @@ app.post("/login", async (req, res) => {
 
       if (res.status(201)) {
         console.log(res);
-        return res.json({ status: "ok", data: token, role: user.role });
+        return res.json({ status: "ok", data: token, role: user.role, id: user._id });
       } else {
         return res.json({ error: "error" });
       }
@@ -116,26 +116,6 @@ app.post("/login", async (req, res) => {
   } catch (error) {
     res.send({ status: "error" });
   }
-});
-
-//routing
-app.post("/homepage", async (req, res) => {
-  const { token } = req.body;
-  try {
-    const user = jwt.verify(token, JWT_SECRET, (err, res) => {
-      console.log(err), "error";
-      console.log(res, "result");
-    });
-    const Username = user.username;
-    userModel
-      .findOne({ username: Username })
-      .then((data) => {
-        res.send({ status: "ok", data: data });
-      })
-      .catch((error) => {
-        res.send({ status: "error", data: error });
-      });
-  } catch (error) {}
 });
 
 //book details fetch
@@ -176,6 +156,12 @@ app.put("/updatebook/:id", async (req, res) => {
   var result = await bookModel.findByIdAndUpdate(id, req.body);
   res.send("Updated");
 });
+//update book
+app.put("/updateuser/:id", async (req, res) => {
+  let id = req.params.id;
+  var result = await userModel.findByIdAndUpdate(id, req.body);
+  res.send("Updated");
+});
 
 //book rented status updating
 app.put("/statusbook/:id", async (req, res) => {
@@ -184,13 +170,6 @@ app.put("/statusbook/:id", async (req, res) => {
   if (book.available === true) {
     book.rented = false;
   }
-});
-
-//update user
-app.put("/updateuser/:id", async (req, res) => {
-  let id = req.params.id;
-  var result = await userModel.findByIdAndUpdate(id, req.body);
-  res.send("Updated");
 });
 
 //delete book

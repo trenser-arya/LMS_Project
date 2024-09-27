@@ -24,7 +24,8 @@ nav section {
   display: inline;
   font-family: "Dancing Script";
 }
-.buttons, input {
+.buttons,
+input {
   background-color: #fff;
   width: 5rem;
   height: 2rem;
@@ -32,9 +33,15 @@ nav section {
   font-family: inherit;
   border: none;
 }
-section input{
+section input {
   width: 15rem;
   padding-left: 1rem;
+}
+.buttons {
+  cursor: pointer;
+}
+#update-user {
+  width: 8rem;
 }
 .buttons:hover {
   background-color: #0ff;
@@ -49,25 +56,25 @@ section input{
   align-items: center;
   color: #fff;
 }
-#card-main{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+#card-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 blockquote {
   display: flex;
 }
-#card-main div img{
+#card-main div img {
   width: 100%;
   border-radius: 1rem;
 }
 .card {
   margin-top: 1rem;
-  box-shadow: 0 1rem 0.5rem 0 rgba(0,0,0,0.2);
+  box-shadow: 0 1rem 0.5rem 0 rgba(0, 0, 0, 0.2);
   width: 20rem;
   border-radius: 1rem;
 }
-.container{
+.container {
   text-align: center;
   padding-bottom: 1rem;
 }

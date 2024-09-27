@@ -43,7 +43,11 @@
           />
           <span id="password-validate-user" class="validator"></span>
         </section>
-        <button id="login-button" class="buttons" aria-label="Click The Button For Login">
+        <button
+          id="login-button"
+          class="buttons"
+          aria-label="Click The Button For Login"
+        >
           Login
         </button>
         <p class="paragraph">
@@ -60,7 +64,7 @@
       <form id="register-form-content" class="forms">
         <header class="main-header">
           <h4>Bookaholic</h4>
-          <h5>Register</h5>
+          <h5 id="heading">Register</h5>
         </header>
         <section class="input-section">
           <label for="person-name">Name</label>
@@ -136,12 +140,13 @@
           <span id="confirm-password-validate" class="validator"></span>
         </section>
         <button
-          id="register-button" class="buttons"
+          id="register-button"
+          class="buttons"
           aria-label="Click The Button For Completing Registration"
         >
           Sign up
         </button>
-        <p class="paragraph">
+        <p class="paragraph" id="paragraph-link">
           Already have an account?
           <a
             id="login-link"

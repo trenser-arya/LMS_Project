@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   loadPage();
 });
-
 function loadPage() {
   const tableBody = document.getElementById("table-body");
   const addBook = document.getElementById("add-book");
@@ -9,15 +8,13 @@ function loadPage() {
   if (userListButton) {
     userListButton.addEventListener("click", function () {
       location.href = "user-list.html";
-    })
+    });
   }
-
-   if (addBook) {
-     addBook.addEventListener("click", function (event) {
-       location.href = "create-book-page.html";
-     });
-   }
-
+  if (addBook) {
+    addBook.addEventListener("click", function (event) {
+      location.href = "create-book-page.html";
+    });
+  }
   axios
     .get("http://localhost:9453/viewbook")
     .then((response) => {
@@ -31,12 +28,13 @@ function loadPage() {
                         <td>${book.author}</td>
                         <td>${book.publicationYear}</td>
                         <td>${book.price}/-</td>
-                        <td><button class="buttons update-button">Update</button></td>
+                        <td><button class="buttons update-button" id="${book._id}">Update</button></td>
                         <td><button class="buttons delete-button" data-id="${book._id}">Delete</button></td>
                     `;
           tableBody.appendChild(row);
         });
         attachDeleteHandlers();
+        attachUpdateHandlers();
       } else {
         alert(response.data.error);
       }
@@ -45,10 +43,8 @@ function loadPage() {
       console.error("Failed to load the page:", error);
     });
 }
-
 function attachDeleteHandlers() {
   const deleteButtons = document.querySelectorAll(".delete-button");
-
   deleteButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const bookId = this.getAttribute("data-id");
@@ -56,7 +52,16 @@ function attachDeleteHandlers() {
     });
   });
 }
-
+function attachUpdateHandlers() {
+  const updateButtons = document.querySelectorAll(".update-button");
+  updateButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const bookData = this.getAttribute("id");
+      localStorage.setItem("bookToUpdate", bookData);
+      location.href = "create-book-page.html";
+    });
+  });
+}
 function deleteBook(bookId) {
   if (confirm("Are you sure you want to delete this book?")) {
     axios

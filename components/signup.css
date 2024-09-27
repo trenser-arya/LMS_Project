@@ -8,7 +8,6 @@ body{
   background: url(../assests/background.jpg);
   overflow: hidden;
 }
-
 #signup-page {
   display: none;
 }
@@ -62,29 +61,24 @@ a {
 }
 .buttons{
   width: 15rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  font-size: 1rem;
 }
-
 ::placeholder {
-  color: #fff;
+  color: #ffffffb4;
 }
-
 .input-section input:invalid,
 .input-section textarea {
   border: 0.1rem solid #f00;
 }
-
 .input-section input:not(:focus):invalid,
 .input-section textarea:not(:focus):invalid {
   border: 0.25rem;
 }
-
 .input-section input:focus,
 .input-section textarea:focus {
   outline: none;
-}
-.buttons {
-  margin-top: 2rem;
-  font-size: 1rem;
 }
 .paragraph {
   text-align: center;
