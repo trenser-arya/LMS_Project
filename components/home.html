@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,6 +18,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Library Management System</title>
   </head>
   <body>
@@ -30,13 +31,16 @@
           >
         </section>
         <section>
-            <input type="text" placeholder="Search">
-            <button class="buttons">Search</button>
+          <button class="buttons" id="update-user">Update Profile</button>
+        </section>
+        <section>
+          <input type="text" id="search-input" placeholder="Search" />
+          <button class="buttons" id="search-button">Search</button>
         </section>
         <section id="nav-section">
           <button
             class="buttons"
-            id="Logout"
+            id="logout"
             aria-label="Click This Button For Sign in"
           >
             Logout
@@ -44,59 +48,6 @@
         </section>
       </div>
     </nav>
-    <main id="card-main">
-      <div class="card">
-        <img src="../assests/book.jpg"/>
-        <div class="container">
-          <h4><b>Alchemist</b></h4>
-          <p>Paulo Coelho</p>
-          <a href="#MoreDetails">More Details</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../assests/book.jpg"/>
-        <div class="container">
-          <h4><b>Jungle Book</b></h4>
-          <p>Rudyard Kipling</p>
-          <a href="#MoreDetails">More Details</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="../assests/book.jpg"/>
-        <div class="container">
-          <h4><b>Jungle Book</b></h4>
-          <p>Rudyard Kipling</p>
-          <a href="#MoreDetails">More Details</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="../assests/book.jpg"/>
-        <div class="container">
-          <h4><b>Jungle Book</b></h4>
-          <p>Rudyard Kipling</p>
-          <a href="#MoreDetails">More Details</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="../assests/book.jpg"/>
-        <div class="container">
-          <h4><b>Jungle Book</b></h4>
-          <p>Rudyard Kipling</p>
-          <a href="#MoreDetails">More Details</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="../assests/book.jpg"/>
-        <div class="container">
-          <h4><b>Jungle Book</b></h4>
-          <p>Rudyard Kipling</p>
-          <a href="#MoreDetails">More Details</a>
-        </div>
-      </div>
-    </main>
+    <main id="card-main"></main>
   </body>
 </html>
