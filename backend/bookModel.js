@@ -26,10 +26,17 @@ const bookSchema = new Schema({
     required: true,
   },
   description: String,
-  status: {
-    type: String,
-    enum: ["Available", "Rented"],
-    default: "Available",
+  available: {
+    type: Boolean,
+    default: true,
+  },
+  rented: {
+    type: Boolean,
+    default: false,
+  },
+  rentedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 

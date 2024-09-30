@@ -30,20 +30,16 @@ function loadPage() {
     .catch((error) => {
       console.log("Failed To Load The Page", error);
     });
-  
-  document.getElementById("logout").addEventListener("click", function () {
-    sessionStorage.clear();
-    localStorage.clear();
-    window.location.href = "signup.html";
-  });
   const params = new URLSearchParams(location.search);
   const bookId = params.get("id");
+  const borrowButton = document.querySelector(".buttons");
   if (bookId) {
     axios
       .get(`http://localhost:9453/singlebook/${bookId}`)
       .then((response) => {
         if (response.status === 200) {
           const book = response.data;
+          const userId = sessionStorage.getItem("userId");
           document.getElementById("book").textContent = book.bookname;
           document.getElementById(
             "author"
@@ -60,6 +56,19 @@ function loadPage() {
           document.getElementById(
             "description"
           ).textContent = `Description : ${book.description}`;
+
+          if (!book.available) {
+            if (book.rentedBy === userId) {
+              borrowButton.textContent = "Return Book";
+              borrowButton.addEventListener("click", returnBook);
+            } else {
+              borrowButton.textContent = "Not Available";
+              borrowButton.disabled = true;
+            }
+          } else {
+            borrowButton.textContent = "Borrow";
+            borrowButton.addEventListener("click", borrowBook);
+          }
         } else {
           alert("Book not found");
         }
@@ -110,4 +119,52 @@ function loadPage() {
       location.href = "signup.html";
     });
   }
+  document.getElementById("logout").addEventListener("click", function () {
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.href = "signup.html";
+  });
+}
+function borrowBook() {
+  const bookId = new URLSearchParams(window.location.search).get("id");
+  const userId = sessionStorage.getItem("userId");
+
+  if (!userId) {
+    alert("You need to log in to borrow a book.");
+    return;
+  }
+
+  axios
+    .put(`http://localhost:9453/statusbook/${bookId}`, { userId })
+    .then((response) => {
+      if (response.status === 200) {
+        alert("Book borrowed successfully!");
+        window.location.reload();
+        borrowButton.textContent = "Return Book";
+        borrowButton.removeEventListener("click", borrowBook);
+        borrowButton.addEventListener("click", returnBook);
+      }
+    })
+    .catch((error) => {
+      console.log("Error updating book status", error);
+    });
+}
+function returnBook() {
+  const bookId = new URLSearchParams(window.location.search).get("id");
+  const userId = sessionStorage.getItem("userId");
+
+  axios
+    .put(`http://localhost:9453/returnbook/${bookId}`, { userId })
+    .then((response) => {
+      if (response.status === 200) {
+        alert("Book returned successfully!");
+        window.location.reload();
+        borrowButton.textContent = "Borrow";
+        borrowButton.removeEventListener("click", returnBook);
+        borrowButton.addEventListener("click", borrowBook);
+      }
+    })
+    .catch((error) => {
+      console.log("Error returning book", error);
+    });
 }

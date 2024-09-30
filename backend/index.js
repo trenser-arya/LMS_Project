@@ -107,7 +107,12 @@ app.post("/login", async (req, res) => {
 
       if (res.status(201)) {
         console.log(res);
-        return res.json({ status: "ok", data: token, role: user.role, id: user._id });
+        return res.json({
+          status: "ok",
+          data: token,
+          role: user.role,
+          id: user._id,
+        });
       } else {
         return res.json({ error: "error" });
       }
@@ -165,10 +170,48 @@ app.put("/updateuser/:id", async (req, res) => {
 
 //book rented status updating
 app.put("/statusbook/:id", async (req, res) => {
-  let id = req.params.id;
-  var book = await bookModel.findById(id);
-  if (book.available === true) {
+  try {
+    const id = req.params.id;
+    const userId = req.body.userId;
+    let book = await bookModel.findById(id);
+    if (!book) {
+      return res.status(404).send({ message: "Book not found" });
+    }
+    if (book.available) {
+      book.rented = true;
+      book.available = false;
+      book.rentedBy = userId;
+    } else {
+      return res.status(400).send({ message: "Book is already rented." });
+    }
+    await book.save();
+    res.status(200).send({ message: "Book status updated successfully", book });
+  } catch (error) {
+    res.status(500).send({ message: "Error updating book status", error });
+  }
+});
+
+//return book
+app.put("/returnbook/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const userId = req.body.userId;
+    let book = await bookModel.findById(id);
+    if (!book) {
+      return res.status(404).send({ message: "Book not found" });
+    }
+    if (book.rentedBy.toString() !== userId) {
+      return res
+        .status(403)
+        .send({ message: "You cannot return a book you did not rent." });
+    }
     book.rented = false;
+    book.available = true;
+    book.rentedBy = null;
+    await book.save();
+    res.status(200).send({ message: "Book returned successfully", book });
+  } catch (error) {
+    res.status(500).send({ message: "Error returning the book", error });
   }
 });
 
