@@ -79,8 +79,6 @@ app.get("/viewuser", async (req, res) => {
 //view single user
 app.get("/singleuser/:id", async (req, res) => {
   try {
-    //const user=userModel.findById(req.body.id)
-    //if (!user.access) return res.status(403).send("Access Denied")
     const { id } = req.params;
     const data = await userModel.findOne({ _id: id });
     res.send(data);
@@ -99,7 +97,6 @@ app.post("/login", async (req, res) => {
     if (!user) {
       return res.send({ error: "User not found" });
     }
-    //if (!user.access) return res.status(403).send("Access Denied")
     if (await bcrypt.compare(password, user.password)) {
       const token = jwt.sign({ id: user._id }, JWT_SECRET, {
         expiresIn: "1w",

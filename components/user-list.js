@@ -32,12 +32,12 @@ function loadPage() {
     });
   if (bookListButton) {
     bookListButton.addEventListener("click", function () {
-      location.href = "user-list.html";
+      location.href = "book-list.html";
     });
   }
   if (userListButton) {
     userListButton.addEventListener("click", function () {
-      location.href = "book-list.html";
+      location.href = "user-list.html";
     });
   }
 }
