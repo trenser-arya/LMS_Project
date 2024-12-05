@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="book-list.css" />
+    <script src="user-list.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Library Management System</title>
+  </head>
+  <body>
+    <header><h1>Users</h1></header>
+    <div class="tab">
+      <button class="buttons" id="book-list-button">Book List</button>
+      <button class="buttons" id="user-list-button">User List</button>
+    </div>
+    <br />
+    <main>
+      <table id="user-table" class="forms">
+        <thead>
+          <tr>
+            <th>User ID.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>User Name</th>
+            <th>Phone No.</th>
+            <th>Block User</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </main>
+  </body>
+</html>

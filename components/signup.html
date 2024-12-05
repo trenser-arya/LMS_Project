@@ -9,29 +9,30 @@
       rel="stylesheet"
     />
     <script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Library Management System</title>
   </head>
   <body>
     <main id="user-signin-page">
-      <form id="login-form-content">
+      <form id="login-form-content" class="forms">
         <header class="main-header">
           <h4>Bookaholic</h4>
           <h5>Login</h5>
         </header>
-        <section id="input-section">
-          <label for="email">Email</label>
+        <section class="input-section">
+          <label for="username-user">Username</label>
           <input
-            type="email"
-            name="email"
-            id="email-login"
-            placeholder="username@gmail.com"
-            aria-label="Enter Your Email ID Here"
+            type="text"
+            name="username-user"
+            id="username-login"
+            placeholder="Username"
+            aria-label="Enter Your Username Here"
             required
           />
-          <span id="email-validate-login"></span>
+          <span id="email-validate-login" class="validator"></span>
         </section>
-        <section id="input-section">
-          <label for="password" name="password">Password</label>
+        <section class="input-section">
+          <label for="password">Password</label>
           <input
             type="password"
             name="password"
@@ -40,9 +41,13 @@
             aria-label="Enter Your Password Here"
             required
           />
-          <span id="password-validate-login"></span>
+          <span id="password-validate-user" class="validator"></span>
         </section>
-        <button id="login-button" aria-label="Click The Button For Login">
+        <button
+          id="login-button"
+          class="buttons"
+          aria-label="Click The Button For Login"
+        >
           Login
         </button>
         <p class="paragraph">
@@ -53,63 +58,16 @@
             >Register for free</a
           >
         </p>
-        <p class="paragraph">
-          Continue As Admin <br />
-          <a id="admin-login-link" href="#AdminLogin">Admin Login</a>
-        </p>
-      </form>
-    </main>
-    <main id="admin-signin-page">
-      <form id="admin-login-form-content">
-        <header class="main-header">
-          <h4>Bookaholic</h4>
-          <h5>Admin Login</h5>
-        </header>
-        <section id="input-section">
-          <label for="username">Username</label>
-          <input
-            type="username"
-            name="username"
-            id="username-login"
-            placeholder="Username"
-            aria-label="Enter Your Username Here"
-            required
-          />
-          <span id="username-validate-login"></span>
-        </section>
-        <section id="input-section">
-          <label for="password" name="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password-admin-login"
-            placeholder="Password"
-            aria-label="Enter Your Password Here"
-            required
-          />
-          <span id="password-validate-login"></span>
-        </section>
-        <button
-          id="admin-login-button"
-          aria-label="Click The Button For Login To Admin Pages"
-        >
-          Login
-        </button>
-        <p class="paragraph">
-          Continue As User <br /><a id="user-login-link" href="#UserLogin"
-            >User Login</a
-          >
-        </p>
       </form>
     </main>
     <main id="signup-page">
-      <form id="register-form-content">
+      <form id="register-form-content" class="forms">
         <header class="main-header">
           <h4>Bookaholic</h4>
-          <h5>Register</h5>
+          <h5 id="heading">Register</h5>
         </header>
-        <section id="input-section">
-          <label for="name">Name</label>
+        <section class="input-section">
+          <label for="person-name">Name</label>
           <input
             type="text"
             name="person-name"
@@ -118,9 +76,21 @@
             aria-label="Enter Your Name Here"
             required
           />
-          <span id="name-validate"></span>
+          <span id="name-validate" class="validator"></span>
         </section>
-        <section id="input-section">
+        <section class="input-section">
+          <label for="username-register">Username</label>
+          <input
+            type="text"
+            name="username-register"
+            placeholder="Username"
+            id="username-register"
+            aria-label="Enter Your Username Here"
+            required
+          />
+          <span id="username-validate" class="validator"></span>
+        </section>
+        <section class="input-section">
           <label for="email">Email</label>
           <input
             type="email"
@@ -130,9 +100,9 @@
             aria-label="Enter Your Email ID Here"
             required
           />
-          <span id="email-validate-register"></span>
+          <span id="email-validate-register" class="validator"></span>
         </section>
-        <section id="input-section">
+        <section class="input-section">
           <label for="phone">Phone Number</label>
           <input
             type="tel"
@@ -143,9 +113,9 @@
             aria-label="Enter Your Phone Number Here"
             required
           />
-          <span id="phone-validate"></span>
+          <span id="phone-validate" class="validator"></span>
         </section>
-        <section id="input-section">
+        <section class="input-section">
           <label for="password" name="password">Password</label>
           <input
             type="password"
@@ -155,9 +125,9 @@
             aria-label="Enter Your Password Here"
             required
           />
-          <span id="password-validate-register"></span>
+          <span id="password-validate-register" class="validator"></span>
         </section>
-        <section id="input-section">
+        <section class="input-section">
           <label for="confirm-password">Confirm Password</label>
           <input
             type="password"
@@ -167,15 +137,16 @@
             aria-label="Enter Your Password Once More Here"
             required
           />
-          <span id="confirm-password-validate"></span>
+          <span id="confirm-password-validate" class="validator"></span>
         </section>
         <button
           id="register-button"
+          class="buttons"
           aria-label="Click The Button For Completing Registration"
         >
           Sign up
         </button>
-        <p class="paragraph">
+        <p class="paragraph" id="paragraph-link">
           Already have an account?
           <a
             id="login-link"
